@@ -1,24 +1,74 @@
 import { defineConfig } from 'vitepress'
+import fs from 'node:fs'
+import path from 'node:path'
+
+const postsDir = path.resolve(process.cwd(), 'posts')
+
+const categoryLabels = {
+  frontend: '前端',
+  backend: '后端',
+  devops: 'DevOps',
+  ai: 'AI',
+  database: '数据库'
+}
+
+function readTitle(file) {
+  const content = fs.readFileSync(file, 'utf-8')
+  const m = content.match(/^---\r?\n[\s\S]*?title:\s*(.+?)\s*\r?\n/m)
+  if (m) return m[1].replace(/^['"]|['"]$/g, '')
+  return path.basename(file, '.md')
+}
+
+// 遍历 posts/ 目录自动生成侧边栏（按分类分组）
+function postsSidebar() {
+  const result = []
+  let cats = []
+  try {
+    cats = fs.readdirSync(postsDir).filter((d) =>
+      fs.statSync(path.join(postsDir, d)).isDirectory()
+    )
+  } catch {
+    return result
+  }
+  for (const cat of cats.sort()) {
+    const catDir = path.join(postsDir, cat)
+    const items = fs.readdirSync(catDir)
+      .filter((f) => f.endsWith('.md') && f !== 'index.md')
+      .map((f) => ({
+        text: readTitle(path.join(catDir, f)),
+        link: `/posts/${cat}/${f.replace(/\.md$/, '')}`
+      }))
+    if (items.length) {
+      result.push({
+        text: categoryLabels[cat] || cat,
+        collapsed: true,
+        items
+      })
+    }
+  }
+  return result
+}
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'Tech Notes',
-  description: '我的技术笔记 — VitePress + GitHub + Cloudflare Pages',
+  description: '我的技术笔记 — VitePress + GitHub + Cloudflare',
   lang: 'zh-CN',
-  // 部署到 Cloudflare Pages 时保持 '/'；若部署在子路径需改为 '/子路径/'
   base: '/',
   cleanUrls: true,
   lastUpdated: true,
+  // 仓库 README 只作为 GitHub 说明，不编译进站点
+  srcExclude: ['README.md'],
 
   head: [['link', { rel: 'icon', href: '/logo.svg' }]],
 
   themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
     logo: '/logo.svg',
     nav: [
       { text: '首页', link: '/' },
+      { text: '博客', link: '/posts/frontend/' },
+      { text: '标签', link: '/tags' },
       { text: '指南', link: '/guide/getting-started' },
-      { text: '部署教程', link: '/guide/deploy' },
       { text: '关于', link: '/about' },
     ],
 
@@ -28,13 +78,16 @@ export default defineConfig({
           text: '指南',
           items: [
             { text: '快速开始', link: '/guide/getting-started' },
-            { text: '部署到 GitHub + Cloudflare Pages', link: '/guide/deploy' },
+            { text: '部署到 GitHub + Cloudflare', link: '/guide/deploy' },
           ],
         },
       ],
+      '/posts/': postsSidebar(),
     },
 
-    socialLinks: [{ icon: 'github', link: 'https://github.com/' }],
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/Knights-of-sheep/tech-notes' },
+    ],
 
     footer: {
       message: '基于 VitePress 构建',

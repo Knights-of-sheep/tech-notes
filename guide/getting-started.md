@@ -47,11 +47,15 @@ npm install -D vitepress
 tech-notes/
 ├── .vitepress/
 │   └── config.mjs        # 站点配置
-├── guide/                 # 文档内容目录
+├── guide/                 # 站点搭建/部署教程
 │   └── getting-started.md
+├── posts/                 # 技术博客（按分类分目录）
+│   └── frontend/
+│       └── xxx.md
 ├── public/                # 静态资源（原样复制到输出目录）
 │   └── logo.svg
 ├── index.md               # 首页
+├── tags.md                # 标签聚合页
 ├── wrangler.toml          # Cloudflare 部署配置
 ├── package.json
 └── .gitignore

@@ -13,13 +13,21 @@
 ```text
 tech-notes/
 ├── .vitepress/
-│   └── config.mjs
-├── guide/
+│   ├── config.mjs
+│   └── theme/              # 自定义主题与组件
+├── guide/                  # 站点搭建/部署教程
 │   ├── getting-started.md
 │   └── deploy.md
+├── posts/                  # 技术博客（按技术领域分类）
+│   ├── frontend/
+│   ├── backend/
+│   ├── devops/
+│   ├── ai/
+│   └── database/
 ├── public/
 │   └── logo.svg
-├── index.md
+├── index.md                # 首页（最新文章 + 分类）
+├── tags.md                 # 标签聚合页
 ├── about.md
 ├── wrangler.toml
 ├── package.json

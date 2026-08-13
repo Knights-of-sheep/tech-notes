@@ -53,15 +53,23 @@ npm install -D vitepress
 ```text
 tech-notes/
 ├── .vitepress/
-│   └── config.mjs          # 站点配置（标题、导航、侧边栏等）
-├── guide/                   # 文档内容
+│   ├── config.mjs          # 站点配置（自动生成侧边栏）
+│   └── theme/              # 自定义主题与组件
+├── guide/                  # 站点搭建/部署教程
 │   ├── getting-started.md
 │   └── deploy.md
-├── public/                  # 静态资源，原样复制到构建产物
+├── posts/                  # 技术博客（按技术领域分类）
+│   ├── frontend/           # 前端
+│   ├── backend/            # 后端
+│   ├── devops/             # DevOps
+│   ├── ai/                 # AI
+│   └── database/           # 数据库
+├── public/                 # 静态资源
 │   └── logo.svg
-├── index.md                 # 首页
-├── about.md                 # 关于页
-├── wrangler.toml            # Cloudflare 部署配置（指定产物目录）
+├── index.md                # 首页（最新文章 + 分类）
+├── tags.md                 # 标签聚合页
+├── about.md
+├── wrangler.toml           # Cloudflare 部署配置
 ├── package.json
 ├── .gitignore
 └── README.md

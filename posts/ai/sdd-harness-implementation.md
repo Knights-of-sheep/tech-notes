@@ -7,7 +7,7 @@ description: "把 SDD（规约驱动开发）+ Harness（执行护栏）从方�
 
 # SDD + Harness 落地执行方案
 
-> 来源依据：`AI_Coding_SDD_Harness_梳理.md`
+> 来源依据：`AI_Coding_SDD_Harness.md`
 > 目标：把 SDD（规约驱动开发）+ Harness（执行护栏）从方法论变成团队可执行的日常流程
 
 ---

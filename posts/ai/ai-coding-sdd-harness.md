@@ -1,11 +1,11 @@
 ---
-title: "AI Coding 可持续交付：Spec-Driven Development + Harness 梳理"
+title: AI_Coding_SDD_Harness
 date: 2026-08-13
 tags: [ai-coding, sdd, engineering]
 description: "从 Vibe Coding 到规约驱动开发：SDD + Harness 如何把 AI 编码变成可评审、可验证、可留存的受治理交付流程。"
 ---
 
-# AI Coding 可持续交付：Spec-Driven Development + Harness 梳理
+# AI_Coding_SDD_Harness
 
 ---
 

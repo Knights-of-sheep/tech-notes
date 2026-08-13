@@ -1,13 +1,13 @@
 ---
-title: VitePress 快速开始
+title: 用 VitePress 搭建博客站
 date: 2026-08-01
 tags: [vitepress, vue, markdown]
-description: 从零搭建一个 VitePress 站点：环境要求、初始化、目录结构与本地预览。
+description: 记录用 VitePress 从零搭起一个技术博客站的完整过程：初始化、目录结构与本地预览。
 ---
 
-# VitePress 快速开始
+# 用 VitePress 搭建博客站
 
-本指南帮助你从零搭建一个 VitePress 站点，并部署到 GitHub + Cloudflare。
+这是「站点建设」系列的第一篇，记录我是如何用 VitePress 搭起这个技术博客站的骨架——从环境准备到本地跑起来。上线部署见下一篇《部署到 GitHub + Cloudflare》。
 
 ## 环境要求
 
@@ -81,3 +81,5 @@ npm run docs:build
 ```
 
 构建产物会输出到 `.vitepress/dist` 目录，这正是后面 Cloudflare 通过 `wrangler.toml` 的 `assets.directory` 要部署的目录。
+
+> 骨架搭好后，下一步就是把它推上 GitHub 并部署上线，见下一篇《[部署到 GitHub + Cloudflare](/posts/site/deploy-github-cloudflare)》。

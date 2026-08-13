@@ -15,15 +15,14 @@ tech-notes/
 ├── .vitepress/
 │   ├── config.mjs
 │   └── theme/              # 自定义主题与组件
-├── guide/                  # 站点搭建/部署教程
-│   ├── getting-started.md
-│   └── deploy.md
 ├── posts/                  # 技术博客（按技术领域分类）
+│   ├── index.md            # 博客总览
 │   ├── frontend/
 │   ├── backend/
 │   ├── devops/
 │   ├── ai/
-│   └── database/
+│   ├── database/
+│   └── site/               # 站点建设
 ├── public/
 │   └── logo.svg
 ├── index.md                # 首页（最新文章 + 分类）

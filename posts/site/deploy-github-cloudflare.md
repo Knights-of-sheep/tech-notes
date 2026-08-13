@@ -1,3 +1,10 @@
+---
+title: 部署到 GitHub + Cloudflare
+date: 2026-08-02
+tags: [cloudflare, github, deploy]
+description: VitePress 站点推送到 GitHub，并通过 Cloudflare Workers + Assets 自动部署上线。
+---
+
 # 部署到 GitHub + Cloudflare
 
 本页是完整的实操教程，带你从本地 VitePress 站点一路部署到 Cloudflare（Workers + Assets）。

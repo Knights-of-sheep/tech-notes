@@ -6,7 +6,8 @@ const labels = {
   backend: '后端',
   devops: 'DevOps',
   ai: 'AI',
-  database: '数据库'
+  database: '数据库',
+  site: '站点建设'
 }
 
 const categories = [...new Set(posts.map((p) => p.category))]

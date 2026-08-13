@@ -55,15 +55,14 @@ tech-notes/
 ├── .vitepress/
 │   ├── config.mjs          # 站点配置（自动生成侧边栏）
 │   └── theme/              # 自定义主题与组件
-├── guide/                  # 站点搭建/部署教程
-│   ├── getting-started.md
-│   └── deploy.md
 ├── posts/                  # 技术博客（按技术领域分类）
+│   ├── index.md            # 博客总览
 │   ├── frontend/           # 前端
 │   ├── backend/            # 后端
 │   ├── devops/             # DevOps
 │   ├── ai/                 # AI
-│   └── database/           # 数据库
+│   ├── database/           # 数据库
+│   └── site/               # 站点建设
 ├── public/                 # 静态资源
 │   └── logo.svg
 ├── index.md                # 首页（最新文章 + 分类）
@@ -120,8 +119,8 @@ not_found_handling = "404-page"
 ## 站点内文档
 
 - 首页：`index.md`
-- 快速开始：`guide/getting-started.md`
-- 部署教程：`guide/deploy.md`
+- 博客总览：`posts/index.md`
+- 标签聚合：`tags.md`
 - 关于：`about.md`
 
 ## License

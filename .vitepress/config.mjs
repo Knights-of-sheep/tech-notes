@@ -9,7 +9,8 @@ const categoryLabels = {
   backend: '后端',
   devops: 'DevOps',
   ai: 'AI',
-  database: '数据库'
+  database: '数据库',
+  site: '站点建设'
 }
 
 function readTitle(file) {
@@ -66,22 +67,12 @@ export default defineConfig({
     logo: '/logo.svg',
     nav: [
       { text: '首页', link: '/' },
-      { text: '博客', link: '/posts/frontend/' },
+      { text: '博客', link: '/posts/' },
       { text: '标签', link: '/tags' },
-      { text: '指南', link: '/guide/getting-started' },
       { text: '关于', link: '/about' },
     ],
 
     sidebar: {
-      '/guide/': [
-        {
-          text: '指南',
-          items: [
-            { text: '快速开始', link: '/guide/getting-started' },
-            { text: '部署到 GitHub + Cloudflare', link: '/guide/deploy' },
-          ],
-        },
-      ],
       '/posts/': postsSidebar(),
     },
 

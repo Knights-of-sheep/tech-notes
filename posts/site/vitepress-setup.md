@@ -1,4 +1,11 @@
-# 快速开始
+---
+title: VitePress 快速开始
+date: 2026-08-01
+tags: [vitepress, vue, markdown]
+description: 从零搭建一个 VitePress 站点：环境要求、初始化、目录结构与本地预览。
+---
+
+# VitePress 快速开始
 
 本指南帮助你从零搭建一个 VitePress 站点，并部署到 GitHub + Cloudflare。
 
@@ -47,10 +54,8 @@ npm install -D vitepress
 tech-notes/
 ├── .vitepress/
 │   └── config.mjs        # 站点配置
-├── guide/                 # 站点搭建/部署教程
-│   └── getting-started.md
 ├── posts/                 # 技术博客（按分类分目录）
-│   └── frontend/
+│   └── site/
 │       └── xxx.md
 ├── public/                # 静态资源（原样复制到输出目录）
 │   └── logo.svg

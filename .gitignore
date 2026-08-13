@@ -1,0 +1,21 @@
+# 依赖
+node_modules/
+
+# 构建产物
+.vitepress/dist/
+.vitepress/cache/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 日志
+*.log
+npm-debug.log*
+
+# 编辑器
+.vscode/
+.idea/
+
+# Claude Code 本地配置
+.claude/

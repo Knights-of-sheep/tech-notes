@@ -1,6 +1,6 @@
 # Tech Notes
 
-使用 **VitePress + GitHub + Cloudflare Pages** 构建的个人技术笔记站点。
+使用 **VitePress + GitHub + Cloudflare** 构建的个人技术笔记站点。
 
 ## 技术栈
 
@@ -8,7 +8,7 @@
 | ---- | ---- | ---- |
 | 静态站点 | [VitePress](https://vitepress.dev) | Markdown 驱动的站点生成器 |
 | 源码托管 | [GitHub](https://github.com) | 版本管理与 CI 触发 |
-| 部署托管 | [Cloudflare Pages](https://pages.cloudflare.com) | 全球 CDN + 自动构建部署 |
+| 部署托管 | [Cloudflare Workers & Pages](https://developers.cloudflare.com/pages/) | 全球 CDN + 自动构建部署 |
 
 ## 快速开始
 
@@ -61,6 +61,7 @@ tech-notes/
 │   └── logo.svg
 ├── index.md                 # 首页
 ├── about.md                 # 关于页
+├── wrangler.toml            # Cloudflare 部署配置（指定产物目录）
 ├── package.json
 ├── .gitignore
 └── README.md
@@ -79,7 +80,7 @@ git branch -M main
 git push -u origin main
 ```
 
-### 4. Cloudflare Pages 部署
+### 4. Cloudflare 部署
 
 1. 进入 [Cloudflare Dashboard](https://dash.cloudflare.com/) → **Workers & Pages** → **Create application** → **Pages**。
 2. 点击 **Connect to Git**，授权并选择 GitHub 仓库。
@@ -87,12 +88,24 @@ git push -u origin main
 
 | 配置项 | 值 |
 | --- | --- |
-| Production branch | `main` |
-| Build command | `npm run docs:build` |
-| Build output directory | `.vitepress/dist` |
+| Build command（构建命令） | `npm run docs:build` |
+| Deploy command（部署命令） | `npx wrangler deploy` |
+| Production branch（生产分支） | `main` |
 
-4. （推荐）在 **Environment variables** 添加 `NODE_VERSION = 20`。
-5. 点击 **Save and Deploy**，等待构建完成，即可获得 `https://<项目名>.pages.dev` 访问地址。
+4. 确保仓库根目录存在 `wrangler.toml`（指定产物目录）：
+
+```toml
+name = "tech-notes"
+compatibility_date = "2025-08-01"
+
+[assets]
+directory = ".vitepress/dist"
+not_found_handling = "404-page"
+```
+
+> **关键**：这套 Workers + Assets 流程没有「Build output directory」面板项，产物目录由 `wrangler.toml` 的 `assets.directory` 决定。缺少它会导致报错 `assets.directory ... does not exist`。
+
+5. 点击 **Save and Deploy**，等待构建完成，即可获得 `https://<项目名>.<子域>.workers.dev` 访问地址。
 
 之后每次 `git push` 到 `main` 分支都会自动触发重新构建与部署。
 

@@ -1,6 +1,6 @@
 # 快速开始
 
-本指南帮助你从零搭建一个 VitePress 站点，并部署到 GitHub + Cloudflare Pages。
+本指南帮助你从零搭建一个 VitePress 站点，并部署到 GitHub + Cloudflare。
 
 ## 环境要求
 
@@ -52,6 +52,7 @@ tech-notes/
 ├── public/                # 静态资源（原样复制到输出目录）
 │   └── logo.svg
 ├── index.md               # 首页
+├── wrangler.toml          # Cloudflare 部署配置
 ├── package.json
 └── .gitignore
 ```
@@ -70,4 +71,4 @@ npm run docs:dev
 npm run docs:build
 ```
 
-构建产物会输出到 `.vitepress/dist` 目录，这正是后面 Cloudflare Pages 要部署的目录。
+构建产物会输出到 `.vitepress/dist` 目录，这正是后面 Cloudflare 通过 `wrangler.toml` 的 `assets.directory` 要部署的目录。
